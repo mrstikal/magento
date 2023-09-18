@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mrstik_pos" sortOrder="2000">
+            <label>Points of Sale</label>
+        </tab>
+        <section id="mrstik_pos" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Points of Sale</label>
+            <tab>mrstik_pos</tab>
+            <resource>Mrstik_Pos::pos</resource>
+            <group id="pos" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Points Of Sale</label>
+                <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Breadcrumbs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

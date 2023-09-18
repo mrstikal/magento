@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="MrstikPosUiDataProviderPosFormModifierPool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="pos_data" xsi:type="array">
+                    <item name="class" xsi:type="string">Mrstik\Pos\Ui\DataProvider\Pos\Form\Modifier\PosData</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="C\Model\Pos\DataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">MrstikPosUiDataProviderPosFormModifierPool</argument>
+        </arguments>
+    </type>
+    <type name="Mrstik\Pos\Controller\Adminhtml\Pos\MassDelete">
+        <arguments>
+            <argument name="successMessage" xsi:type="string" translate="true">A total of %1 record(s) have been deleted.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while deleting record(s).</argument>
+        </arguments>
+    </type>
+    <type name="Mrstik\Pos\Controller\Adminhtml\Pos\MassDisable">
+        <arguments>
+            <argument name="successMessage" xsi:type="string" translate="true">A total of %1 Points Of Sale have been disabled.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while disabling Points Of Sale.</argument>
+        </arguments>
+    </type>
+    <type name="Mrstik\Pos\Controller\Adminhtml\Pos\MassEnable">
+        <arguments>
+            <argument name="successMessage" xsi:type="string" translate="true">A total of %1 Points Of Sale have been enabled.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while enabling Points Of Sale.</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,16 @@
+<?php $_pos = $block->getCurrentPos();?>
+<div class="pos-view">
+    <div class="pos-name">
+        <strong><?php /* @escapeNotVerified */ echo __('Name') ?></strong>: <?php /* @escapeNotVerified */ echo $_pos->getName();?>
+    </div>
+    <?php if ($address = $_pos->getAttributeText('address')) :?>
+    <div class="pos-address">
+        <strong><?php /* @escapeNotVerified */ echo __('Address') ?></strong>: <?php /* @escapeNotVerified */ echo $address;?>
+    </div>
+    <?php endif;?>
+    <?php if ($is_available = $_pos->getAttributeText('is_available')) :?>
+    <div class="pos-availablity">
+        <strong><?php /* @escapeNotVerified */ echo __('Biography') ?></strong>: <?php /* @escapeNotVerified */ echo $is_available;?>
+    </div>
+    <?php endif;?>
+</div>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mrstik\Pos\Api\PosRepositoryInterface" type="Mrstik\Pos\Model\PosRepository" />
+    <preference for="Mrstik\Pos\Api\Data\PosInterface" type="Mrstik\Pos\Model\Pos" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mrstik_pos_pos_listing_data_source" xsi:type="string">Mrstik\Pos\Model\ResourceModel\Pos\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mrstik\Pos\Model\ResourceModel\Pos\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">pos_entity</argument>
+            <argument name="eventPrefix" xsi:type="string">mrstik_pos_pos_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">pos_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Mrstik\Pos\Model\ResourceModel\Pos</argument>
+        </arguments>
+    </type>
+    <type name="Mrstik\Pos\Model\Output">
+        <arguments>
+            <argument name="templateProcessor" xsi:type="object">Magento\Widget\Model\Template\Filter</argument>
+        </arguments>
+    </type>
+    <virtualType name="MrstikPosModelPosSourceIsAvailable" type="Mrstik\Pos\Model\Source\Options">
+        <arguments>
+            <argument name="options" xsi:type="array">
+                <item name="1" xsi:type="array">
+                    <item name="value" xsi:type="const">Mrstik\Pos\Model\Pos::STATUS_AVAILABLE</item>
+                    <item name="label" xsi:type="string" translate="true">Yes</item>
+                </item>
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="const">Mrstik\Pos\Model\Pos::STATUS_UNAVAILABLE</item>
+                    <item name="label" xsi:type="string" translate="true">No</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+           <argument name="commands" xsi:type="array">
+                <item name="mrstikPosAdd" xsi:type="object">Mrstik\Pos\Console\Command\AddPos</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

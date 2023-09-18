@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mrstik_Pos::pos" title="Points Of Sale" module="Mrstik_Pos" sortOrder="65" resource="Mrstik_Pos::pos"/>
+        <add id="Mrstik_Pos::managepos" title="Manage Points Of Sale" module="Mrstik_Pos" sortOrder="10"
+             action="mrstik_pos/pos" resource="Mrstik_Pos::pos" parent="Mrstik_Pos::pos" />
+    </menu>
+</config>

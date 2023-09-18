@@ -1,0 +1,40 @@
+<?php $_poss = $block->getPointsOfSale(); ?>
+
+<div class="poss">
+    <?php if ($_poss->getSize() > 0) : ?>
+
+        <div class="mrstik-pos-pos-toolbar toolbar top"><?php echo $block->getPagerHtml(); ?></div>
+
+        <div class="table-wrapper pos-items">
+
+            <table class="data table table-pos-items history" id="pos-table">
+
+                <caption class="table-caption"><?php echo __('Points of Sales') ?></caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col" class="col name"><?php echo __('Name') ?></th>
+                        <th scope="col" class="col address"><?php echo __('Address') ?></th>
+                    </tr>
+                </thead>
+
+                <?php foreach ($_poss as $_pos) : ?>
+                    <tr>
+                        <td class="col name">
+                            <?php /* @escapeNotVerified */ echo $_pos->getName(); ?>
+                        </td>
+                        <td class="col address">
+                            <?php /* @escapeNotVerified */ echo $_pos->getAddress(); ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+
+            </table>
+
+        </div>
+
+        <div class="mrstik-pos-pos-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php else : ?>
+        <?php /* @escapeNotVerified */ echo __('There are no Points of Sale at this moment'); ?>
+    <?php endif; ?>
+</div>

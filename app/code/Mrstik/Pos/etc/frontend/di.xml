@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="mrstik_pos" xsi:type="array">
+                    <item name="class" xsi:type="string">Mrstik\Pos\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="MrstikPosRoutingEntityPos" type="Mrstik\Pos\Model\Routing\Entity">
+        <arguments>
+            <argument name="prefixConfigPath" xsi:type="const">Mrstik\Pos\Model\Pos\Url::URL_PREFIX_CONFIG_PATH</argument>
+            <argument name="suffixConfigPath" xsi:type="const">Mrstik\Pos\Model\Pos\Url::URL_SUFFIX_CONFIG_PATH</argument>
+            <argument name="listKeyConfigPath" xsi:type="const">Mrstik\Pos\Model\Pos\Url::LIST_URL_CONFIG_PATH</argument>
+            <argument name="factory" xsi:type="object">Mrstik\Pos\Model\PosFactory</argument>
+            <argument name="controller" xsi:type="string">pos</argument>
+        </arguments>
+    </virtualType>
+    <type name="Mrstik\Pos\Controller\Router">
+        <arguments>
+            <argument name="routingEntities" xsi:type="array">
+                <item name="pos" xsi:type="object">MrstikPosRoutingEntityPos</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="posTopmenu" type="Mrstik\Pos\Plugin\Block\Topmenu" />
+    </type>
+</config>
